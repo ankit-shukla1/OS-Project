@@ -88,8 +88,14 @@ void *make_thread(void *t_position)
 int main()
 {
 	
-	int total_threads=102;
-	
+	int total_threads=100;
+	//asking user to enter the number of threads, if it wants otherwise running the default case.
+	printf("If you want to enter the number of threads then press Y, otherwise by default 100 threads will be created\n\n");
+	printf("If you want the default case then press any key except Y and press enter\n\n");
+	char ans;
+	scanf("%c",&ans);
+	if(ans=='Y');
+	scanf("%d",&total_threads);
 	pthread_t thread_count[total_threads];
 	
 	
