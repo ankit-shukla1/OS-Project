@@ -39,26 +39,26 @@ int allocate_map(void)
 	}
 }
 
-
+//function that is used to allocate id to the threads
 int allocate_pid(void)
 {
 	int i;
 	for(i=0;i<size;i++)
-	{
+	{        // checking if particular id is available
 		if(pid_count[i]==0)
-		{
+		{      // if the id is available, settting it's value to 1 and returning the id
 			pid_count[i]=1;
 			return i;
 		}
 	}
-	
+	// if all the ids have been used then returning -1 as an error message
 	if(i==size)
 	return -1;		
 }
 
-
+// function used to release a particular id
 void release_pid(int tid)
-{
+{	// updating the value of the index as 0 so it becomes available
 	pid_count[tid]=0;
 }
 
