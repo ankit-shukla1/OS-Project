@@ -129,7 +129,10 @@ int main()
 
 	for(i=0; i<total_threads; i++)
         pthread_join(thread_count[i],NULL);
+	// this is equivalent to wait (NULL);
 	
+	printf("Successful Execution\n\n\n");
+	return 0;
 	
 }
 
