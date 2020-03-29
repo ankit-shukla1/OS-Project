@@ -63,21 +63,26 @@ void release_pid(int tid)
 }
 
 
-
+// function called during creation of thread
 void *make_thread(void *t_position)
 {
+	//converting void pointer into integer and using it
 	int thread_n = *((int *)t_position);
 	int t_id  = allocate_pid();
+	//adding the MIN_PID so the value comes in the range of the given MIN_PID and MAX_PID
 	t_id+=MIN_PID;
+	//generating random time in range of 1 to 15 seconds
 	int wait_time  = rand()%15 + 1;
 	if(t_id != -1)
 	{
 		printf("PId %d allocated to thread %d\n\n",t_id,thread_n);
+		//sleeping for a random time
 		sleep(wait_time);
 		printf("PId %d released by thread %d after %d seconds\n\n",t_id,thread_n,wait_time);
 		release_pid(t_id);
 		
 	}
+	// case if all pids have already been allocated
 	else
 	printf("All the pids have been allocated, the thread will have to wait\n\n");
 
